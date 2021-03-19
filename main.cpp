@@ -71,7 +71,7 @@ void testVulnerabilities(char * argBuffer, int * mainArrayOnStack, int * mainArr
 
 
     // #10 array on heap - access out of bounds
-    int* arrayOnHeap = new int[5];
+    int* arrayOnHeap = (int*) malloc(5*sizeof(int));
     arrayOnHeap[10] = 5;
     // #11 access out of bound with loop
     for (int i = 0; i <= 5; i++) {
@@ -119,9 +119,19 @@ void testVulnerabilities(char * argBuffer, int * mainArrayOnStack, int * mainArr
 
 int main(int argc, char * argv[]) {
 
+    if (argc < 2) {
+        printf("Input one argument");
+        return 0;
+    }
 
-    int mainArrayOnStack[5] = {0};
-    int mainArrayOnHeap[5] = {0};
+    int mainArrayOnStack[5] = {};
+    int * mainArrayOnHeap = new int[5];
+
+    for (int i=0; i<5; ++i)  {
+        mainArrayOnStack[i] = 1;
+        mainArrayOnHeap[i] = 1;
+    }
+
 
     testVulnerabilities(argv[1], mainArrayOnStack, mainArrayOnHeap);
     return 0;
