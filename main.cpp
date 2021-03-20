@@ -1,7 +1,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <string.h>
-int sArr[4];
+int sArr[3];
 int retNeg() {
     return -1;
 }
@@ -13,7 +13,7 @@ void test(char * arg, int*mArrS, int*mArrH) {
     unsigned int unsign = retNeg();
     char buff[8],dest[8],dest2[2],inpt[5],srcBuf[5]="ahoj";
     strncpy(buff, arg, sizeof(buff));
-    int arrS[4] = {};
+    int arrS[3] = {};
     int* arrH = new int[3];
     for (int i=0; i<4; ++i)  {
         mArrS[i] = 1;
